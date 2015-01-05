@@ -16,7 +16,7 @@ public class ThreadDaemonTest {
 		A a = new A();
 		
 		public void run() {
-			//a.setDaemon(true);
+			a.setDaemon(true);
 			a.start();
 			System.out.println("B is end....");
 		}

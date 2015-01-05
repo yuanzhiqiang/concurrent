@@ -7,11 +7,7 @@ public class CyclicBarrierTest {
 	private static final int THREAD_COUNT = 3;
 
 	private final static CyclicBarrier CYCLIC_BARRIER = new CyclicBarrier(
-			THREAD_COUNT, new Runnable() {
-				public void run() {
-					System.out.println("======>我是导游，本次点名结束，准备走下一个环节!");
-				}
-			});
+			THREAD_COUNT);
 
 	public static void main(String[] args) throws InterruptedException,
 			BrokenBarrierException {

@@ -22,8 +22,8 @@ public class LockAndUnlockTest {
 	}
 	
 	public static void main(String []args) throws InterruptedException {
-		ThreadTest [] threads = new ThreadTest[100];
-		for(int i = 0 ; i < 100 ; i++) {
+		ThreadTest [] threads = new ThreadTest[4];
+		for(int i = 0 ; i < 4 ; i++) {
 			threads[i] = new ThreadTest();
 			threads[i].start();
 		}

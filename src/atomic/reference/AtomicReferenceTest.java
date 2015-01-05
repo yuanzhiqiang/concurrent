@@ -23,7 +23,7 @@ public class AtomicReferenceTest {
 	 * @see AtomicReference#compareAndSet(Object, Object) 对比设置值，参数1：原始值，参数2：修改目标引用
 	 * @see AtomicReference#getAndSet(Object) 将引用的目标修改为设置的参数，直到修改成功为止，返回修改前的引用
 	 */
-	public final static AtomicReference <String>ATOMIC_REFERENCE = new AtomicReference<String>("abc");
+	public final static AtomicReference <String>ATOMIC_REFERENCE = new AtomicReference<String>(new String("abc"));
 	
 	private final static Random RANDOM_OBJECT = new Random();
 	

@@ -4,16 +4,32 @@ public class NoVisiabilityTest {
 	
 	private static class ReadThread extends Thread {
 		
-		private boolean ready;
+		private Boolean ready = new Boolean(false);
 		
-		private int number;
+		public int number;
 		
 		public void run() {
-			while(!ready) {
+			while(!this.ready) {
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				number++;	
-				Thread.yield();
+				for(int i = 0 ;i < 1000; i++){
+					int j =i;
+				}
+//				Thread.yield();
+//				call();
 			}
 			System.out.println(ready);
+			System.out.println(number);
+		}
+		
+		private void call(){
+			int i =1;
+//			Thread.yield();
+//			System.out.println(i);
 		}
 		
 		public void readyOn() {
@@ -22,10 +38,26 @@ public class NoVisiabilityTest {
 	}
 	
 	public static void main(String []args) throws InterruptedException {
-		ReadThread readThread = new ReadThread();
+		final ReadThread readThread = new ReadThread();
 		readThread.start();
+		
 		Thread.sleep(200);
-		readThread.readyOn();
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				readThread.readyOn();
+				while(true){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(readThread.number);
+				}
+			}
+			
+		}).start();
+		Thread.sleep(1000);
 		System.out.println(readThread.ready);
 	}
 }

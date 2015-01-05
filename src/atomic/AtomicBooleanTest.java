@@ -27,7 +27,7 @@ public class AtomicBooleanTest {
 						e.printStackTrace();
 					}
 					if(TEST_BOOLEAN.compareAndSet(false, true)) {
-						System.out.println("我成功了！");
+						System.out.println(Thread.currentThread().getName() + "我成功了！");
 					}
 				}
 			}.start();

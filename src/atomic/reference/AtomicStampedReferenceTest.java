@@ -63,11 +63,13 @@ public class AtomicStampedReferenceTest {
 					e.printStackTrace();
 				}
 				int stamp = ATOMIC_REFERENCE.getStamp();
-				while(!ATOMIC_REFERENCE.compareAndSet(ATOMIC_REFERENCE.getReference(), "abc" , stamp , stamp + 1)) {
+				while(!ATOMIC_REFERENCE.compareAndSet(ATOMIC_REFERENCE.getReference(), "abcFinal" , stamp , stamp + 1)) {
 					stamp = ATOMIC_REFERENCE.getStamp();
 				}
 				System.out.println("已经改为原始值！");
 			}
 		}.start();
+		Thread.sleep(2000);
+		System.out.println("final:" + ATOMIC_REFERENCE.getReference());
 	}
 }
